@@ -20,7 +20,7 @@ export default function Movie() {
     {movies ? <>
     <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 border-2">
       <BiSearchAlt className="w-1/6 text-xl"/>
-      <input onChange={(e)=> setSearch(e.target.value)} className="w-5/6 p-2 outline-none" type="text" placeholder="vjhbknm"/></div>
+      <input onChange={(e)=> setSearch(e.target.value)} className="w-5/6 p-2 outline-none text-black" type="text" placeholder="search"/></div>
     
     <div className="flex flex-wrap justify-around ">
     
