@@ -8,10 +8,9 @@ import MovieInfo from "./components/MovieInfo";
 import TvInfo from "./components/TvInfo";
 import Footer from "./components/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import SingUp from "./Pages/SingUp";
-// import LogIn from "./Pages/LogIn";
 import Account from "./Pages/Account";
 import ProtectedRouter from "./components/ProtectedRouter";
+import Auth from "./Pages/Auth";
 
 export default function App() {
   return (
@@ -25,9 +24,9 @@ export default function App() {
           <Route path="/movie" element={<Movie />} />
           <Route path="/movieInfo/:id" element={<MovieInfo />} />
           <Route path="/tvInfo/:id" element={<TvInfo />} />
-          {/* <Route path="/singUp" element={<SingUp />} />
-          <Route path="/logIn" element={<LogIn/>} /> */}
-          <Route path="/account" element={<ProtectedRouter > <Account/></ProtectedRouter>} />
+           <Route path="/auth" element={<Auth />} />
+          {/* <Route path="/logIn" element={<LogIn/>} /> */}
+                    <Route path="/account" element={<ProtectedRouter > <Account/></ProtectedRouter>} />
 
         </Routes>
       </AuthContextProvider>

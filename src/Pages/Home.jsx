@@ -50,10 +50,11 @@ export default function Home() {
 <>
 
     <div className=" homeContainer justify-around flex flex-col mt-40">
-    <ShowImage  arr={dataAiring_today} path='/tvInfo/' title='Airing today tv show' />
-    <ShowImage arr={dataPupolar} path='/movieInfo/' title='popular movies' />
+    <ShowImage arr={dataPupolar} path='/movieInfo/' title='popular movies' />    
     <ShowImage arr={dataTopRate} path='/tvInfo/' title='top rated tv show' />
-    <ShowImage arr={dataUpconing} path='/movieInfo/' title=' up coming movies' />
+    <ShowImage arr={dataUpconing} path='/movieInfo/' title=' up coming movies' />  
+      <ShowImage  arr={dataAiring_today} path='/tvInfo/' title='Airing today tv show' />
+
 
       
       

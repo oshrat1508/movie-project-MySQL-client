@@ -58,13 +58,9 @@ const navigate = useNavigate()
           
           ) : (
             <ul className=" flex w-3/6 justify-end  ">
-              <Link to={"/singup"}>
+              <Link to={"/auth"}>
                 {" "}
-                <li className={listStyle}>singup </li>
-              </Link>
-              <Link to={"/login"}>
-                {" "}
-                <li className={listStyle}>login </li>
+                <li className={listStyle}>singin </li>
               </Link>
             </ul>
           )}
