@@ -6,13 +6,11 @@ import { useEffect } from "react";
 import { Link} from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-import { UserAuth } from "../context/AuthContext";
 
 
 export default function TvInfo() {
   const { id } = useParams();
   const [similarTv, setSimilar] = useState([]);
-  const { user } = UserAuth();
   const [TvInfo, setTvInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);

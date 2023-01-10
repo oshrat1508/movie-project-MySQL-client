@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import {  useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import * as api from "../components/api";
 import { useNavigate ,Link} from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
@@ -7,7 +7,7 @@ import { gapi } from "gapi-script";
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
 export default function Auth() {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [singUp, setsingUp] = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -39,7 +39,7 @@ export default function Auth() {
       accessToken: response.accessToken,
       userID: response.userID,
     });
-    // dispatch({type:'AUTH', payload:{  data }})
+    dispatch({type:'AUTH', payload:{  data }})
     console.log("facebook login success ,client side", data);
     navigate("/")
     // window.location.reload()
@@ -54,7 +54,7 @@ export default function Auth() {
     }); 
     // const data = user.user
     
-    // dispatch({type:'AUTH', payload:{  data }})
+    dispatch({type:'AUTH', payload:{  data }})
     navigate("/");
     // window.location.reload()
 
@@ -71,7 +71,7 @@ export default function Auth() {
       try {
         const { data } = await api.singup(userData);
        
-        // dispatch({type:'AUTH', payload:{  data }})
+        dispatch({type:'AUTH', payload:{  data }})
 
         setUserData({
           email: "",
@@ -91,7 +91,7 @@ export default function Auth() {
         const { data} = await api.singin(userData);
     console.log(data);
 
-        // dispatch({type:'AUTH', payload:{  data }})
+        dispatch({type:'AUTH', payload:{  data }})
 
         // navigate("/");
         // // window.location.reload()
@@ -187,13 +187,13 @@ export default function Auth() {
         <div className="flex flex-col mt-5 items-center w-[100%] ">
           <FacebookLogin
           buttonStyle={{width:'290px' , height:'50px'}}
-            appId="884021796289155"
+            appId="556226686425690"
             autoLoad={false}
             callback={responseFacebook} 
           />
           <GoogleLogin
             className="w-[290px] md:w-[70%] h-12 mt-2"
-            clientId="727555427268-u0l3487tpitph7t1s2lir4vsdk6153se.apps.googleusercontent.com"
+            clientId="727555427268-tm61ueoct3tpjr6mgkicp1juhmnhtlg9.apps.googleusercontent.com"
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFailure}
             cookiePolicy={"single_host_origin"}

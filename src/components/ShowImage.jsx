@@ -1,35 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-// import { db } from "../firebase/FireBase";
-// import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-// import { UserAuth } from "../context/AuthContext";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+
 
 export default function ShowImage({ arr ,title,path}) {
-  // const { user } = UserAuth();
 
-  // const [saved, setSaved] = useState(false);
-  // const [like, setLike] = useState(
-  //   JSON.parse(localStorage.getItem("is-open")) || false
-  // );
-  // const movieId = doc(db, "users", `${user?.email}`);
-
-  // const saveShow = async () => {
-  //   if (user?.email) {
-  //     localStorage.setItem("is-open", JSON.stringify(!like));
-  //     setLike(!like);
-  //     setSaved(true);
-  //     await updateDoc(movieId, {
-  //       savedShows: arrayUnion({
-  //         id: arr.id,
-  //         title: arr.title,
-  //         img: arr.backdrop_path,
-  //       }),
-  //     });
-  //   } else {
-  //     alert("please log in to save");
-  //   }
-  // };
+  const [like, setLike] = useState()
 
   return (
       <div className="flex  flex-col  w-[90%] m-auto  mb-28 ">
@@ -42,9 +18,9 @@ export default function ShowImage({ arr ,title,path}) {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt=""
             />
-              {/* <div onClick={saveShow}>
-        {like ? <AiOutlineHeart /> : <AiFillHeart />}
-      </div> */}
+              <div onClick={''}>
+        {/* {like ? <AiFillHeart /> : <AiOutlineHeart />} */}
+      </div>
             </div></Link>
           ))}
         </div>

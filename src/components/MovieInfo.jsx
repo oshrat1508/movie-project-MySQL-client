@@ -5,23 +5,26 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link} from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-// import { db } from "../firebase/FireBase";
-// import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { UserAuth } from "../context/AuthContext";
+import { like } from "./api";
 
 
 export default function MovieInfo() {
+  const user =JSON.parse( localStorage.getItem('user'))
   const { id } = useParams();
   const [similarMovie, setSimilar] = useState([]);
 const [movieInfo, setMovieInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
-  const { user } = UserAuth();
 
-  const [saved, setSaved] = useState(false);
-  const [like, setLike] = useState(false);
+  const check = user.results?.like(like => like === id)
+
+  console.log(check);
+  // const [like, setLike] = useState(false);
 
 
+  const handleLike = async() =>{
+   await like({...user.results }, id)
+}
     const get_similar_by_id=async()=> {
     const {data} = await axios.get(
      ` https://api.themoviedb.org/3/movie/${id}/similar?api_key=698c26f192e68da611452c5592599ea2 ` );
@@ -42,8 +45,6 @@ const [movieInfo, setMovieInfo] = useState([]);
     
     setTrailer(data.results[0].key) ;
   }
-
-
 
   const get_movie_by_id = async () => {
     const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${id}
@@ -73,9 +74,9 @@ const [movieInfo, setMovieInfo] = useState([]);
           src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}
           alt=""
         />
-         <div><Link>
-        {like ?   <AiFillHeart className="text-2xl" />:<AiOutlineHeart className="text-2xl"/>}
-     </Link> </div>
+         <div onClick={handleLike} >
+        {check ?   <AiFillHeart className="text-2xl" />:<AiOutlineHeart className="text-2xl"/>}
+      </div>
       </div>
       <div className="md:w-2/3">
         <h1 className="text-5xl w-4/6 mb-6 font-bold" >{movieInfo.title}</h1>

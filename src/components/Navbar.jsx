@@ -2,22 +2,20 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link ,useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
 
 export default function Navbar() {
+  const user =JSON.parse( localStorage.getItem('user'))?.data
+  // console.log(user);
   const [listStyle, setListStyle] = useState(
     "hover:text-md font-bold text-gray-400 hover:text-violet-700 transition-all"
   );
   const [responsive, setRespinsive] = useState(false);
-  const { user, logOut } = UserAuth();
 const navigate = useNavigate()
-  const handleLogOut = async () => {
-    try{
-    logOut()
-    navigate('/')
-    }catch(e){
-      console.log(e);
-    }
+  const handleLogOut =  () => {
+    
+localStorage.clear()    
+navigate('/')
+    
 
   };
   return (
@@ -45,15 +43,15 @@ const navigate = useNavigate()
             <li className={`${listStyle} w-20`}>tv show</li>
           </Link>
           </ul>
-          {user?.email ? (
-            <ul className=" flex w-5/6 justify-end  ">
-              <Link to={"/account"}>
+          {user ? (
+            <ul className=" flex w-3/6 justify-end   ">
+              {/* <Link to={"/account"}>
                 {" "}
                 <li className={`${listStyle} w-40  `}>My Favorite movie's  </li>
-              </Link>
+              </Link> */}
              
                 
-                <li onClick={handleLogOut} className={`${listStyle} w-20 cursor-pointer `}>| log out</li>
+                <li onClick={handleLogOut} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
              </ul>
           
           ) : (
@@ -81,12 +79,9 @@ const navigate = useNavigate()
               {" "}
               <li className={listStyle}>tv show</li>
             </Link>
-            {user?.email ? (
+            {user ? (
               <div>
-                <Link to={"/account"}>
-                  {" "}
-                  <li className={listStyle}>My Favorite movie's </li>
-                </Link>
+                
                 <li onClick={handleLogOut} className={listStyle}>log out</li>
               </div>
             ) : (

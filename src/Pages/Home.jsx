@@ -5,8 +5,12 @@ import { useState, useEffect } from "react";
 import ShowImage from "../components/ShowImage";
 import "swiper/css/bundle";
 import "../App.css";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  // const user = useSelector(state => state.activeUser)
+
+
   const [dataPupolar, setdataPupolar] = useState([]);
   const [dataUpconing, setdataUpconing] = useState([]);
   const [dataTopRate, setdataTopRate] = useState([]);
