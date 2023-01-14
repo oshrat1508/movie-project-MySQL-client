@@ -10,7 +10,7 @@ export default function Tv() {
     const [Tv, setTv] = useState(null);
     const [search, setSearch] = useState('');
   const get_all_Tv = async () => {
-    const { data } = await axios.get("http://localhost:8000/chilTime/tv");
+    const { data } = await axios.get("https://oshratproject.onrender.com/chillTime/tv");
     setTv(data);
   };
   get_all_Tv();
@@ -18,9 +18,9 @@ export default function Tv() {
         <h1 className="text-4xl mb-9">Tv shows</h1>
 
   {Tv ? <>
-  <div className="text-center text-white w-[25%] flex items-center mb-10 border-2">
+  <div className="text-center text-white w-[25%] flex items-center mb-10 ">
     <BiSearchAlt className="w-1/6 text-xl"/>
-    <input onChange={(e)=>setSearch(e.target.value)} className="w-5/6 p-2 outline-none" type="text" placeholder="vjhbknm"/></div>
+    <input onChange={(e)=>setSearch(e.target.value)} className="md:w-5/6 p-2 outline-none" type="text" placeholder="vjhbknm"/></div>
   
   <div className="flex flex-wrap justify-around ">
   

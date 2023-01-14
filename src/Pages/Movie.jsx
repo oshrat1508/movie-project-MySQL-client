@@ -12,16 +12,16 @@ export default function Movie() {
  const[search , setSearch] = useState('')
 
   const get_all_movies = async () => {
-    const { data } = await axios.get("http://localhost:8000/chilTime/movie");
+    const { data } = await axios.get("https://oshratproject.onrender.com/chillTime/movie");
     setMovies(data);
   };
   get_all_movies();
   return <div className="w-[85%] m-auto flex flex-col justify-center  items-center ">
     <h1 className="text-4xl mb-9">Movies</h1>
     {movies ? <>
-    <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 border-2">
-      <BiSearchAlt className="w-1/6 text-xl"/>
-      <input onChange={(e)=> setSearch(e.target.value)} className="w-5/6 p-2 outline-none text-black" type="text" placeholder="search"/></div>
+    <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 ">
+      {/* <BiSearchAlt className="w-1/6 text-xl"/> */}
+      <input onChange={(e)=> setSearch(e.target.value)} className="md:w-5/6 p-2 outline-none text-black" type="text" placeholder="search"/></div>
     
     <div className="flex flex-wrap justify-around ">
     

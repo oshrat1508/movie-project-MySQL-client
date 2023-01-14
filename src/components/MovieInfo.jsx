@@ -102,7 +102,7 @@ const allusers= async() => {
       </div>
     </div>
     <div className="flex flex-col items-center">
-    <div className="h-[200px] md:h-[600px] w-3/6">
+    <div className="h-[200px] md:h-[600px] md:w-4/6 w-5/6">
     <iframe className="md:w-[100%] md:h-[80%] w-[100%] "  src={`https://www.youtube.com/embed/${Trailer}` }title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     </div>
     <div className="flex w-5/6  movie mb-16 justify-center" onClick={()=>window.location.reload()}>

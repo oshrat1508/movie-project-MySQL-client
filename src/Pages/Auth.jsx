@@ -35,7 +35,7 @@ export default function Auth() {
 
   const responseFacebook = async (response) => {
     console.log(response);
-    const { data } = await axios.post("http://localhost:8000/facebooklogin", {
+    const { data } = await axios.post("https://oshratproject.onrender.com/facebooklogin", {
       accessToken: response.accessToken,
       userID: response.userID,
     });
@@ -49,7 +49,7 @@ export default function Auth() {
  
   const responseGoogleSuccess = async (response) => {
     console.log(response);
-    const { data } = await axios.post("http://localhost:8000/googlelogin", {
+    const { data } = await axios.post("https://oshratproject.onrender.com/googlelogin", {
       tokenId: response.tokenId,
     }); 
     // const data = user.user
@@ -112,17 +112,17 @@ export default function Auth() {
   };
 
   return (
-    <div className="w-screen  flex justify-center  ">
-      <div className=" flex justify-center flex-col mt-10 md:flex-row w-[95%] md:m-20  ">
+    <div className="md:w-screen  flex justify-center  mb-3 ">
+      <div className=" flex justify-center flex-col md:mt-10 md:flex-row w-[95%] md:m-20  ">
         
         <div
-          className="w-[100%]  md:w-[30%] bg-white flex flex-col  items-center text-sm py-5 border-2 md:py-0 "
+          className="w-[100%]  md:w-[30%]  flex flex-col  items-center text-sm p-5 border-2 rounded  md:py-3 "
         >
-          <h1 className="text-3xl my-1">{singUp ? "הרשמה" : "כניסה"}</h1>
+          <h1 className="text-3xl my-1">{singUp ? "Sing up" : "Sing in"}</h1>
 
           <h4 className="my-1">
             {" "}
-            {singUp ? 'הירשם באמצעות דוא"ל' : 'התחבר באמצעות דוא"ל ששלך וסיסמא'}
+            {singUp ? 'Sign up with your email' : 'Log in using your email and password'}
           </h4>
           {message && (
             <span className="text-white bg-red-600 p-1 font-medium rounded">
@@ -137,15 +137,15 @@ export default function Auth() {
                 onChange={handleChange}
                 name="fullName"
                 type="text"
-                className=" my-1 text-right w-[70%] outline-none border-b-2 p-2 border-neutral-300"
-                placeholder="שם מלא"
+                className=" my-1 text-right w-[90%] md:w-[70%] outline-none border-b-2 p-2 border-neutral-300"
+                placeholder="Full name"
               />
               <input
                 onChange={handleChange}
                 name="userName"
                 type="text"
-                className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
-                placeholder="שם משתמש"
+                className="my-1 text-right w-[90%] md:w-[70%]  outline-none border-b-2 p-2 border-neutral-300"
+                placeholder="User name"
               />
             </>
           )}
@@ -153,37 +153,37 @@ export default function Auth() {
             onChange={handleChange}
             name="email"
             type="email"
-            className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
-            placeholder='הזן כתובת דוא"ל'
+            className="my-1 text-right w-[90%] md:w-[70%]  outline-none border-b-2 p-2 border-neutral-300"
+            placeholder='Enter Your email'
           />
           <input
             onChange={handleChange}
             name="password"
             type={showPass ? "text" : "password"}
-            className="my-1 text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
-            placeholder="הזן סיסמא"
+            className="my-1 text-right w-[90%] md:w-[70%]  outline-none border-b-2 p-2 border-neutral-300"
+            placeholder="Enter your password"
           />
           {singUp && (
             <input
               onChange={handleChange}
               type={showPassConfirm ? "text" : "password"}
               name="confirmPassword"
-              className="text-right w-[70%] md:w-[] outline-none border-b-2 p-2 border-neutral-300"
-              placeholder="אשר סיסמא"
+              className="text-right w-[90%] md:w-[70%]  outline-none border-b-2 p-2 border-neutral-300"
+              placeholder="Confirm password"
             />
           )}
           <button
-            className="mt-3 p-2 border-2 w-[70%] md:w-[] rounded border-blue-200"
+            className="mt-3 p-2 border-2 w-[90%] md:w-[70%]  rounded border-blue-200"
             onClick={handleClick}
           >
-            {singUp ? "הירשם" : "התחבר"}
+            {singUp ? "Sing up" : "Sing in"}
           </button>
           </div>
-          <div className="border-b-2 w-[70%] md:w-[] my-2 self-center">
-            <span className="relative bg-white px-1 text-xs top-2 left-[46%]">
-              או
+          {/* <div className="border-b-2 w-[90%] md:w-[70%]  my-2 self-center"> */}
+            <span className="  px-1 text-xs text-center my-3 left-[46%]">
+              or
             </span>
-          </div>
+          {/* </div> */}
         <div className="flex flex-col mt-5 items-center w-[100%] ">
           <FacebookLogin
           buttonStyle={{width:'290px' , height:'50px'}}
@@ -192,7 +192,7 @@ export default function Auth() {
             callback={responseFacebook} 
           />
           <GoogleLogin
-            className="w-[290px] md:w-[70%] h-12 mt-2"
+            className="w-[290px] md w-[90%]:md:w-[70%] h-12 mt-2"
             clientId="727555427268-tm61ueoct3tpjr6mgkicp1juhmnhtlg9.apps.googleusercontent.com"
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFailure}
@@ -202,13 +202,13 @@ export default function Auth() {
           />
           </div>
 </div>
-          <span className="text-[10px] flex justify-between w-[70%] mt-2">
+          <span className="text-[10px] flex justify-between w-[90%] md:w-[70%] mt-2">
             <span onClick={() => setsingUp(!singUp)} className="cursor-pointer">
-              {singUp ? "כבר יש חשבון ? התחבר" : "אין לך חשבון? הרשם"}
+              {singUp ? "Do you have an account ? Sing in" : "Do not have an account ? Sign up"}
             </span>
-            <span className="cursor-pointer">
+            {/* <span className="cursor-pointer">
               {singUp ? null : <Link to='/forgot-password/undefined'> שכחת סיסמא ?</Link>}
-            </span>
+            </span> */}
           </span>
         </div>
       </div>

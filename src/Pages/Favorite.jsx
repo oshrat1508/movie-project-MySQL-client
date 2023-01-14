@@ -11,14 +11,14 @@ export default function Favorite() {
   const [filteredTv, setFilteredTv] = useState();
   const user = JSON.parse(localStorage.getItem('user')).data
   const get_all_movies = async () => {
-    const { data } = await axios.get("http://localhost:8000/chilTime/movie");
+    const { data } = await axios.get("https://oshratproject.onrender.com/chillTime/movie");
     setMovies(data); 
      setFilteredMovies(updateedMovies)
 
   };
 
   const get_all_Tv = async () => {
-    const { data } = await axios.get("http://localhost:8000/chilTime/tv");
+    const { data } = await axios.get("https://oshratproject.onrender.com/chillTime/tv");
     setTv(data); 
     setFilteredTv(updateedTv)
   };

@@ -18,6 +18,8 @@ navigate('/')
     
 
   };
+
+  console.log(responsive);
   return (
     <div className=" capitalize w-[90%] flex justify-between m-auto  p-6 ">
       <div className="logo text-4xl font-bold text-violet-700 font-mono ">
@@ -42,19 +44,15 @@ navigate('/')
             {" "}
             <li className={`${listStyle} w-20`}>Tv show</li>
           </Link> 
-           <Link to={"/favorite"}>
+          {user && <Link to={"/favorite"}>
                 {" "}
                 <li className={`${listStyle} w-40  `}>My favorite movie's  </li>
-              </Link>
-             
-          </ul>
-         </div> 
-         <div>
-          {user ? (
+              </Link>}
+              {user ? (
             <ul className="    ">
             
                 
-                <li onClick={handleLogOut} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
+                <li onClick={()=> localStorage.clear()} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
              </ul>
           
           ) : (
@@ -65,21 +63,21 @@ navigate('/')
               </Link>
             </ul>
           )}
+          </ul>
+         </div> 
         
-      </div>
+         
+        
       {responsive ? (
-        <div className=" absolute text-white bg-gradient-to-t from-black to-[rgb(0, 5, 20)]  flex justify-center  top-20 w-screen left-0 h-36 md:hidden ">
-          <ul className="flex  flex-col justify-around">
+        <div  className=" absolute text-white bg-gradient-to-t from-black to-[#000514]  flex justify-center  top-20 w-screen left-0 h-36 md:hidden ">
+          <ul onClick={()=> setRespinsive(false)} className="flex  flex-col justify-around">
             <Link to={"/"}>
-              {" "}
-              <li className={listStyle}>home</li>
+              <li  className={listStyle}>home</li>
             </Link>
             <Link to={"/movie"}>
-              {" "}
               <li className={listStyle}>movie</li>
             </Link>
             <Link to={"/tv"}>
-              {" "}
               <li className={listStyle}>tv show</li>
             </Link>
             {user ? (
@@ -89,13 +87,9 @@ navigate('/')
               </div>
             ) : (
               <div>
-                <Link to={"/singup"}>
-                  {" "}
+                <Link to={"/auth"}>
+  
                   <li className={listStyle}>singup </li>
-                </Link>
-                <Link to={"/login"}>
-                  {" "}
-                  <li className={listStyle}>login </li>
                 </Link>
               </div>
             )}
