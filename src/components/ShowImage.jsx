@@ -18,8 +18,7 @@ export default function ShowImage({ arr ,title,path}) {
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt=""
             />
-              <div onClick={''}>
-        {/* {like ? <AiFillHeart /> : <AiOutlineHeart />} */}
+              <div >
       </div>
             </div></Link>
           ))}

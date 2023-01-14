@@ -29,27 +29,30 @@ navigate('/')
       >
         <AiOutlineMenu />
       </div>
-      <div className="w-3/4  justify-end mr-14 hidden md:flex">
-        <ul className=" flex justify-end w-2/6  ">
+      <div className="   hidden md:flex">
+        <ul className=" flex ">
           <Link to={"/"}>
-            <li className={`${listStyle} w-20`}>home</li>
+            <li className={`${listStyle} w-20`}>Home</li>
           </Link>
           <Link to={"/movie"}>
             {" "}
-            <li className={`${listStyle} w-20`}>movie</li>
+            <li className={`${listStyle} w-20`}>Movie</li>
           </Link>
           <Link to={"/tv"}>
             {" "}
-            <li className={`${listStyle} w-20`}>tv show</li>
-          </Link>
-          </ul>
-          {user ? (
-            <ul className=" flex w-3/6 justify-end   ">
-              {/* <Link to={"/account"}>
+            <li className={`${listStyle} w-20`}>Tv show</li>
+          </Link> 
+           <Link to={"/favorite"}>
                 {" "}
-                <li className={`${listStyle} w-40  `}>My Favorite movie's  </li>
-              </Link> */}
+                <li className={`${listStyle} w-40  `}>My favorite movie's  </li>
+              </Link>
              
+          </ul>
+         </div> 
+         <div>
+          {user ? (
+            <ul className="    ">
+            
                 
                 <li onClick={handleLogOut} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
              </ul>

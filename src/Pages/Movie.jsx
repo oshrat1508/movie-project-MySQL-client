@@ -17,6 +17,7 @@ export default function Movie() {
   };
   get_all_movies();
   return <div className="w-[85%] m-auto flex flex-col justify-center  items-center ">
+    <h1 className="text-4xl mb-9">Movies</h1>
     {movies ? <>
     <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 border-2">
       <BiSearchAlt className="w-1/6 text-xl"/>

@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link} from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import Likes from "./Likes";
+import {like,usersById} from './api'
 
 
 
@@ -14,6 +16,19 @@ export default function TvInfo() {
   const [TvInfo, setTvInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
+  const [activeUser,setactiveUser] = useState()
+  const user =JSON.parse( localStorage.getItem('user'))
+
+  const allusers= async() => {
+    const {data} = await usersById(user?.data._id)
+    setactiveUser(data);
+   }
+
+  const handleLike = async() =>{
+    const {data} = await like(user?.data , id)
+    localStorage.setItem('user',JSON.stringify({data}))
+       window.location.reload(false);
+  }
 
   const get_similar_by_id=async()=> {
   const {data} = await axios.get(
@@ -23,7 +38,7 @@ export default function TvInfo() {
 }
 
 useEffect(() => {
- 
+  allusers()
   get_similar_by_id()
 }, []);
 
@@ -65,9 +80,9 @@ useEffect(() => {
           src={`https://image.tmdb.org/t/p/w500${TvInfo.poster_path}`}
           alt=""
         />
-           {/* <div onClick={saveShow}><Link>
-        {like ?   <AiFillHeart className="text-2xl" />:<AiOutlineHeart className="text-2xl"/>}
-     </Link> </div> */}
+          {user && <div onClick={handleLike} >
+       < Likes activeUser={activeUser} id={id} />
+      </div>}
       </div>
       <div className="md:w-2/3">
         <h1 className="text-5xl w-4/6 mb-6 font-bold" >{TvInfo.name}</h1>

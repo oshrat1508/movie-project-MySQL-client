@@ -84,7 +84,7 @@ export default function Auth() {
         // window.location.reload()
 
       } catch (e) {
-        setMessage(e.response.data);
+        setMessage(e.response?.data);
       }
     } else if (!singUp) {
       try {

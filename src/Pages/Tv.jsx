@@ -15,6 +15,8 @@ export default function Tv() {
   };
   get_all_Tv();
   return <div className="w-[85%] m-auto flex flex-col justify-center items-center ">
+        <h1 className="text-4xl mb-9">Tv shows</h1>
+
   {Tv ? <>
   <div className="text-center text-white w-[25%] flex items-center mb-10 border-2">
     <BiSearchAlt className="w-1/6 text-xl"/>

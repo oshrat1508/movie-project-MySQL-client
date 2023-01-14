@@ -4,26 +4,23 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link} from 'react-router-dom';
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { like } from "./api";
+import { like , usersById } from "./api";
+import Likes from "./Likes";
 
 
 export default function MovieInfo() {
   const user =JSON.parse( localStorage.getItem('user'))
-  const { id } = useParams();
+  const {id} = useParams();
+  const [activeUser,setactiveUser] = useState()
   const [similarMovie, setSimilar] = useState([]);
-const [movieInfo, setMovieInfo] = useState([]);
+  const [movieInfo, setMovieInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
 
-  const check = user.results?.like(like => like === id)
-
-  console.log(check);
-  // const [like, setLike] = useState(false);
-
-
   const handleLike = async() =>{
-   await like({...user.results }, id)
+  const {data} = await like(user?.data , id)
+  localStorage.setItem('user',JSON.stringify({data}))
+     window.location.reload(false);
 }
     const get_similar_by_id=async()=> {
     const {data} = await axios.get(
@@ -32,8 +29,13 @@ const [movieInfo, setMovieInfo] = useState([]);
     setSimilar(data.results) ;
   }
 
+const allusers= async() => {
+ const {data} = await usersById(user?.data._id)
+ setactiveUser(data);
+}
+
   useEffect(() => {
-   
+   allusers()
     get_similar_by_id()
   }, []);
 
@@ -74,9 +76,9 @@ const [movieInfo, setMovieInfo] = useState([]);
           src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}
           alt=""
         />
-         <div onClick={handleLike} >
-        {check ?   <AiFillHeart className="text-2xl" />:<AiOutlineHeart className="text-2xl"/>}
-      </div>
+         {user && <div onClick={handleLike} >
+       < Likes activeUser={activeUser} id={id} />
+      </div>}
       </div>
       <div className="md:w-2/3">
         <h1 className="text-5xl w-4/6 mb-6 font-bold" >{movieInfo.title}</h1>
