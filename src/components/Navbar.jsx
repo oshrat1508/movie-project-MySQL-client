@@ -49,8 +49,7 @@ navigate('/')
             <ul className="  flex  ">
             
                 {" "}
-                <li onClick={"/favorite"} className={`${listStyle} w-40  `}>My favorite movie's  </li>
-              
+               <Link to={"/favorite"}> <li  className={`${listStyle} w-40  `}>My favorite movie's  </li></Link>
                 <li onClick={()=> {localStorage.clear()
                 window.location.reload()
                 }} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
