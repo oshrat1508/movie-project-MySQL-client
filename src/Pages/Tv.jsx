@@ -19,8 +19,7 @@ export default function Tv() {
 
   {Tv ? <>
   <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 ">
-    <BiSearchAlt className="w-1/6 text-xl"/>
-    <input onChange={(e)=>setSearch(e.target.value)} className="md:w-5/6 p-2 outline-none" type="text" placeholder="vjhbknm"/></div>
+    <input onChange={(e)=>setSearch(e.target.value)} className="md:w-5/6 p-2 outline-none text-black" type="text" placeholder="vjhbknm"/></div>
   
   <div className="flex flex-wrap justify-around ">
   

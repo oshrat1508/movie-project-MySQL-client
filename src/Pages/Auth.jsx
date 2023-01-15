@@ -125,12 +125,12 @@ export default function Auth() {
             {singUp ? 'Sign up with your email' : 'Log in using your email and password'}
           </h4>
           {message && (
-            <span className="text-white bg-red-600 p-1 font-medium rounded">
+            <span className=" bg-red-600 p-1 font-medium rounded">
               {message}
             </span>
           )}
           <div className="flex flex-col-reverse md:flex-col justify-center ">
-          <div className="text-center">
+          <div className="text-center text-black">
           {singUp && (
             <>
               <input
@@ -173,17 +173,15 @@ export default function Auth() {
             />
           )}
           <button
-            className="mt-3 p-2 border-2 w-[90%] md:w-[70%]  rounded border-blue-200"
+            className="mt-3 text-white p-2 border-2 w-[90%] md:w-[70%]  rounded border-blue-200"
             onClick={handleClick}
           >
             {singUp ? "Sing up" : "Sing in"}
           </button>
           </div>
-          {/* <div className="border-b-2 w-[90%] md:w-[70%]  my-2 self-center"> */}
             <span className="  px-1 text-xs text-center my-3 left-[46%]">
               or
             </span>
-          {/* </div> */}
         <div className="flex flex-col mt-5 items-center w-[100%] ">
           <FacebookLogin
           buttonStyle={{width:'290px' , height:'50px'}}
