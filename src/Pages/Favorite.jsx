@@ -1,7 +1,7 @@
 import React ,{useState,useEffect} from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import { Circles , MutatingDots } from 'react-loader-spinner'
+import { Circles , Puff } from 'react-loader-spinner'
 
 
 export default function Favorite() {
@@ -38,21 +38,21 @@ export default function Favorite() {
           <h1 className="text-4xl mb-9">Favorite</h1>
           <div>
             <h1 className='text-3xl mb-3'>Movies</h1>
-            <div className='flex flex-wrap w-[80vw]'>{
+            <div className='flex flex-wrap w-[100vw] md:w-[80vw] justify-evenly'>{
               filteredMovies ?       
           filteredMovies.map((movie , i)=>(
             movie ?
               <Link key={i} to={`/movieInfo/${movie?.id}`}>
-                    <div className=" hover:scale-110 mx-1 ">
-                    <img className="rounded-t-xl md:w-72 w-40 mb-4  hover:duration-200" src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" />
-                    <div className="relative h-10 md:w-72 w-40  bottom-14 text-white bg-black bg-opacity-70 p-2">{movie?.title}</div>
+                    <div className="  hover:scale-110 md:mx-1 mb-1">
+                    <img className="rounded-t-xl md:w-72 w-36 mb-2 md:mb-4 hover:duration-200" src={`https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`} alt="" />
+                    <div className="md:relative  md:h-10 md:w-72 w-36 md:bottom-14 text-white md:bg-black md:bg-opacity-70 md:p-2">{movie?.title}</div>
                 </div></Link> : null  
            
-          )) :   < MutatingDots
+          )) :   < Puff
           height="80"
           width="80"
           radius="9"
-          color="green"
+          color="black"
           ariaLabel="loading"
           wrapperStyle
           wrapperClass
@@ -60,20 +60,20 @@ export default function Favorite() {
 </div></div>
 <div>
             <h1 className='text-3xl mb-3'>Tv show</h1>
-            <div className='flex flex-wrap w-[80vw]'>
+            <div className='flex flex-wrap w-[100vw] md:w-[80vw] justify-evenly'>
               {filteredTv ?
           filteredTv.map((tv , i)=>(
             tv &&
               <Link key={i} to={`/tvInfo/${tv?.id}`}>
-                    <div className=" hover:scale-110 mx-1 ">
-                    <img className="rounded-t-xl md:w-72 w-40 mb-4  hover:duration-200" src={`https://image.tmdb.org/t/p/w500${tv?.backdrop_path}`} alt="" />
-                    <div className="relative h-10 md:w-72 w-40  bottom-14 text-white bg-black bg-opacity-70 p-2">{tv?.title}</div>
+                    <div className="  hover:scale-110 md:mx-1 mb-1 ">
+                    <img className="rounded-t-xl md:w-72 w-36 mb-2 md:mb-4 hover:duration-200" src={`https://image.tmdb.org/t/p/w500${tv?.backdrop_path}`} alt="" />
+                    <div className="md:relative  md:h-10 md:w-72 w-36 md:bottom-14 text-white md:bg-black md:bg-opacity-70 md:p-2">{tv?.title}</div>
                 </div></Link>   
            
-          ))  :  <MutatingDots
-          height="500"
+          ))  :  <Puff
+          height="80"
           width="80"
-          color="white"
+          color="black"
           radius="9"
           ariaLabel="loading"
           wrapperStyle

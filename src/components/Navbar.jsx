@@ -27,11 +27,11 @@ navigate('/')
       </div>
       <div
         onClick={() => setRespinsive(!responsive)}
-        className="text-white md:hidden flex text-2xl cursor-pointer"
+        className="text-white lg:hidden flex text-2xl cursor-pointer"
       >
         <AiOutlineMenu />
       </div>
-      <div className="   hidden md:flex">
+      <div className="   hidden lg:flex">
         <ul className=" flex ">
           <Link to={"/"}>
             <li className={`${listStyle} w-20`}>Home</li>
@@ -44,14 +44,14 @@ navigate('/')
             {" "}
             <li className={`${listStyle} w-20`}>Tv show</li>
           </Link> 
-          {user && <Link to={"/favorite"}>
+         
+              {user ? (
+            <ul className="  flex  ">
+            
+            <Link to={"/favorite"}>
                 {" "}
                 <li className={`${listStyle} w-40  `}>My favorite movie's  </li>
-              </Link>}
-              {user ? (
-            <ul className="    ">
-            
-                
+              </Link>
                 <li onClick={()=> localStorage.clear()} className={`${listStyle} w-20 cursor-pointer `}> log out</li>
              </ul>
           
@@ -69,8 +69,8 @@ navigate('/')
          
         
       {responsive ? (
-        <div  className=" absolute text-white bg-gradient-to-t from-black to-[#000514]  flex justify-center  top-20 w-screen left-0 h-36 md:hidden ">
-          <ul onClick={()=> setRespinsive(false)} className="flex  flex-col justify-around">
+        <div  className=" absolute text-white bg-gradient-to-t from-black to-[#000514]  flex justify-center  top-20 w-screen left-0 h-36 lg:hidden ">
+          <ul onClick={()=> setRespinsive(false)} className="flex  flex-col items-center justify-around">
             <Link to={"/"}>
               <li  className={listStyle}>home</li>
             </Link>
@@ -81,8 +81,11 @@ navigate('/')
               <li className={listStyle}>tv show</li>
             </Link>
             {user ? (
-              <div>
-                
+              <div className="flex  flex-col items-center" >
+                 <Link to={"/favorite"}>
+                {" "}
+                <li className={`${listStyle} w-40  `}>My favorite movie's  </li>
+              </Link>
                 <li onClick={handleLogOut} className={listStyle}>log out</li>
               </div>
             ) : (

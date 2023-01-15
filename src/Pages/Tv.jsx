@@ -18,7 +18,7 @@ export default function Tv() {
         <h1 className="text-4xl mb-9">Tv shows</h1>
 
   {Tv ? <>
-  <div className="text-center text-white w-[25%] flex items-center mb-10 ">
+  <div className="text-center text-white w-[50%] md:w-[35%] flex items-center mb-10 ">
     <BiSearchAlt className="w-1/6 text-xl"/>
     <input onChange={(e)=>setSearch(e.target.value)} className="md:w-5/6 p-2 outline-none" type="text" placeholder="vjhbknm"/></div>
   
@@ -31,9 +31,9 @@ export default function Tv() {
       return tv
     }
   }).map((tv,i)=>(
-  <Link key={i} to={`/tvInfo/${tv.id}`}><div className=" hover:scale-110 mx-1 ">
-      <img className="rounded-t-xl md:w-72 w-40 mb-4  hover:duration-200" src={`https://image.tmdb.org/t/p/w500${tv.backdrop_path}`} alt="" />
-      <div className="relative h-10 md:w-72 w-40  bottom-14 text-white bg-black bg-opacity-70 p-2">{tv.name}</div>
+  <Link key={i} to={`/tvInfo/${tv.id}`}><div className="hover:scale-110 md:mx-1 mb-1">
+      <img className="rounded-t-xl md:w-72 w-36 mb-2 md:mb-4 hover:duration-200" src={`https://image.tmdb.org/t/p/w500${tv.backdrop_path}`} alt="" />
+      <div className="md:relative  md:h-10 md:w-72 w-36 md:bottom-14 text-white md:bg-black md:bg-opacity-70 md:p-2">{tv.name}</div>
   </div></Link>
 ))}</div></>:
 <Circles
