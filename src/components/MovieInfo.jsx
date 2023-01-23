@@ -12,8 +12,6 @@ export default function MovieInfo() {
   const user =JSON.parse( localStorage.getItem('user'))
   const {id} = useParams();
   const [liked , setLiked] = useState()
-  console.log(liked);
-
   const [force , forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [similarMovie, setSimilar] = useState([]);
   const [movieInfo, setMovieInfo] = useState([]);

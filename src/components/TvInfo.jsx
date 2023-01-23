@@ -12,10 +12,18 @@ import {like,usersById} from './api'
 
 export default function TvInfo() {
   const { id } = useParams();
+  const [liked , setLiked] = useState()
+  const [force , forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [similarTv, setSimilar] = useState([]);
   const [TvInfo, setTvInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
+
+  React.useEffect(()=>{
+    setLiked(user?.data.like?.find(
+        (likes) => likes === id
+      ))
+    },[force])
   const [activeUser,setactiveUser] = useState()
   const user =JSON.parse( localStorage.getItem('user'))
 
@@ -27,7 +35,7 @@ export default function TvInfo() {
   const handleLike = async() =>{
     const {data} = await like(user?.data , id)
     localStorage.setItem('user',JSON.stringify({data}))
-       window.location.reload(false);
+    forceUpdate()
   }
 
   const get_similar_by_id=async()=> {
@@ -39,6 +47,9 @@ export default function TvInfo() {
 
 useEffect(() => {
   allusers()
+  setLiked(user?.data.like?.find(
+    (likes) => likes === id
+  ))
   get_similar_by_id()
 }, []);
 
@@ -81,7 +92,7 @@ useEffect(() => {
           alt=""
         />
           {user && <div onClick={handleLike} >
-       < Likes activeUser={activeUser} id={id} />
+          < Likes liked={liked} id={id} />
       </div>}
       </div>
       <div className="md:w-2/3">
