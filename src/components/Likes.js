@@ -26,12 +26,12 @@ const Likes = ({liked, id}) => {
     if (user?.like.length > 0) {
       return liked ? (
         <>
-          <AiFillHeart  className='mt-0.5' size={20} />
+          <AiFillHeart  className='mt-0.5 cursor-pointer' size={20} />
         </>
       ) : (
         <>
         
-          <AiOutlineHeart  size={20} className='mt-0.5' />
+          <AiOutlineHeart  size={20} className='mt-0.5 cursor-pointer' />
            
         </>
       );
@@ -39,7 +39,7 @@ const Likes = ({liked, id}) => {
     return (
       <>
       
-        <AiOutlineHeart    size={20} />
+        <AiOutlineHeart   className="cursor-pointer" size={20} />
       </>
     );
   };
