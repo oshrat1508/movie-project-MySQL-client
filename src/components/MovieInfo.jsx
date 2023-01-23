@@ -11,16 +11,26 @@ import Likes from "./Likes";
 export default function MovieInfo() {
   const user =JSON.parse( localStorage.getItem('user'))
   const {id} = useParams();
-  const [activeUser,setactiveUser] = useState()
+  const [liked , setLiked] = useState()
+  console.log(liked);
+
+  const [force , forceUpdate] = React.useReducer((x) => x + 1, 0);
   const [similarMovie, setSimilar] = useState([]);
   const [movieInfo, setMovieInfo] = useState([]);
   const [cast, setcast] = useState([]);
   const [Trailer, setTrailer] = useState([]);
 
+
+  React.useEffect(()=>{
+    setLiked(user?.data.like?.find(
+        (likes) => likes === id
+      ))
+    },[force])
+
   const handleLike = async() =>{
   const {data} = await like(user?.data , id)
   localStorage.setItem('user',JSON.stringify({data}))
-     window.location.reload(false);
+  forceUpdate()
 }
     const get_similar_by_id=async()=> {
     const {data} = await axios.get(
@@ -31,11 +41,13 @@ export default function MovieInfo() {
 
 const allusers= async() => {
  const {data} = await usersById(user?.data._id)
- setactiveUser(data);
 }
 
   useEffect(() => {
    allusers()
+   setLiked(user?.data.like?.find(
+    (likes) => likes === id
+  ))
     get_similar_by_id()
   }, []);
 
@@ -77,7 +89,7 @@ const allusers= async() => {
           alt=""
         />
          {user && <div onClick={handleLike} >
-       < Likes activeUser={activeUser} id={id} />
+      < Likes liked={liked} id={id} />
       </div>}
       </div>
       <div className="md:w-2/3">
@@ -94,7 +106,7 @@ const allusers= async() => {
         <h1 className="mt-10 text-2xl">cast</h1>
         <div className="flex justify-around mt-3">
           {cast.cast?.slice(0, 5)?.map((cas, i) => (
-            <div className="w-14 md:w-20"><img key={i} className=" rounded-md " src={`https://image.tmdb.org/t/p/w500${cas.profile_path}`} />
+            <div key={i} className="w-14 md:w-20"><img  className=" rounded-md " src={`https://image.tmdb.org/t/p/w500${cas.profile_path}`} />
             <div>{cas.name}</div>
             </div>
           ))}
@@ -107,7 +119,7 @@ const allusers= async() => {
     </div>
     <div className="flex w-5/6  movie mb-16 justify-center" onClick={()=>window.location.reload()}>
     {similarMovie.slice(0,7).map((data,i) => (
-     <Link  to={`/movieInfo/${data.id}`}  > <img  key={i}
+     <Link key={i} to={`/movieInfo/${data.id}`}  > <img  
         className=" m-3 w-40  rounded-2xl  "
         src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
         alt=""

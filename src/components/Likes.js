@@ -10,20 +10,28 @@ import {
 
 const user = JSON.parse(localStorage.getItem("user"))?.data;
   
-const Likes = ({ id}) => {
-  console.log(user?.like.length > 0 );
+const Likes = ({liked, id}) => {
+
+//   const [like , setLike] = React.useState()
+//   const [reducerV,forceUpdate ] = React.useState(true);
+
+//   React.useEffect(()=>{
+// setLike(user.like?.find(
+//     (likes) => likes === id
+//   ))
+// },[reducerV])
+
+//   console.log(reducerV , like);
+
     if (user?.like.length > 0) {
-      console.log('hey');
-      return user.like?.find(
-        (like) => like === id
-      ) ? (
+      return liked ? (
         <>
-          <AiFillHeart className='mt-0.5' size={20} />
+          <AiFillHeart  className='mt-0.5' size={20} />
         </>
       ) : (
         <>
         
-          <AiOutlineHeart size={20} className='mt-0.5' />
+          <AiOutlineHeart  size={20} className='mt-0.5' />
            
         </>
       );
@@ -31,7 +39,7 @@ const Likes = ({ id}) => {
     return (
       <>
       
-        <AiOutlineHeart size={20} />
+        <AiOutlineHeart    size={20} />
       </>
     );
   };
